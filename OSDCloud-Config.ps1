@@ -24,8 +24,24 @@ Write-Host  -ForegroundColor Cyan "Start OSDCloud with MY Parameters"
 Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Pro -ZTI
 
 #Anything I want  can go right here and I can change it at any time since it is in the Cloud!!!!!
-Write-Host  -ForegroundColor Cyan "Starting OSDCloud PostAction ..."
-Write-Warning "I'm not sure of what to put here yet"
+$UpdateWindows =$true
+if (!(Get-Module PSWindowsUpdate -ListAvailable)) {
+    try {
+        Install-Module PSWindowsUpdate -Force
+    }
+    catch {
+        Write-Warning 'Unable to install PSWindowsUpdate Powershell Module'
+        $UpdateWindows = $false
+    }
+}
+
+if ($UpdateWindows) {
+    Write-Host -Foregroundcolor DarkCyan 'Add-WUServiceManager -MicrosoftUpdate -Confirm:$false'
+    Add-WUServiceManager -MicrosoftUpdate -Confirm:$false
+    
+    Write-Host -ForegroundColor DarkCyan 'Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot'
+    Install-WindowsUpdate -MicrosoftUpdate -AcceptAll -IgnoreReboot -NotTitle 'Malicious'
+}note
 
 #Restart from WinPE
 Write-Host  -ForegroundColor Cyan "Restarting in 20 seconds!"
