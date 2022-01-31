@@ -23,7 +23,7 @@ Write-Warning "That didn't work because I haven't coded it yet!"
 Write-Host  -ForegroundColor Cyan "Start OSDCloud with MY Parameters"
 Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Pro -ZTI
 
-#Anything I want  can go right here and I can change it at any time since it is in the Cloud!!!!!
+#Install Windows updates before continueing with Autopilt join
 $UpdateWindows =$true
 if (!(Get-Module PSWindowsUpdate -ListAvailable)) {
     try {
