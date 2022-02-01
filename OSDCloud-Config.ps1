@@ -23,7 +23,7 @@ Write-Host  -ForegroundColor Cyan "Start OSDCloud with MY Parameters"
 Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Pro -ZTI
 
 #Install Windows updates - not working
-Set-ExecutionPolicy -bypass
+Set-ExecutionPolicy bypass
 $UpdateWindows =$true
 if (!(Get-Module PSWindowsUpdate -ListAvailable)) {
     try {
