@@ -20,7 +20,7 @@ Import-Module OSD -Force
 
 #Start OSDCloud ZTI the RIGHT way
 Write-Host  -ForegroundColor Cyan "Start OSDCloud with MY Parameters"
-Start-OSDCloud -OSLanguage en-gb -OSBuild 21H1 -OSEdition Pro -ZTI
+Start-OSDCloud -OSLanguage en-gb -OSBuild 21H2 -OSLicense Retail -OSImageIndex 9 -OSEdition Pro -ZTI
 
 #Install Windows updates - not working
 Set-ExecutionPolicy bypass
